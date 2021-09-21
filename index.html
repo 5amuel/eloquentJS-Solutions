@@ -9,14 +9,16 @@
 <body>
     <script >
         
-        for(num = 0; num < 101; num++){
-            switch (true) {
-                case (num % 3 === 0) && (num % 5 === 0): console.log(num, 'FizzBuzz'); break;
-                case (num % 3 === 0) : console.log(num, 'Fizz'); break;
-                case (num % 5 === 0) : console.log(num, 'Buzz'); break;
-            }
+        for(let line = 0; line < 8; line++){
+            const stringOne = " # # # #"
+            const stringTwo = "# # # # "
+            if(line % 2 == 0){
+                console.log(stringOne)
+            }else{
+                console.log(stringTwo)
+            }  
         }
-        
+                
     </script>
 
 </body>
