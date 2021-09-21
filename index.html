@@ -9,11 +9,13 @@
 <body>
     <script >
         
-        for(num = 0; num < 101; num++){
+        for(num = 1; num < 101; num++){
+            
             switch (true) {
-                case (num % 3 === 0) && (num % 5 === 0): console.log(num, 'FizzBuzz'); break;
-                case (num % 3 === 0) : console.log(num, 'Fizz'); break;
-                case (num % 5 === 0) : console.log(num, 'Buzz'); break;
+                case (num % 3 === 0) && (num % 5 === 0): console.log('FizzBuzz'); break;
+                case (num % 3 === 0) : console.log('Fizz'); break;
+                case (num % 5 === 0) : console.log('Buzz'); break;
+                default : console.log(num);
             }
         }
         
