@@ -9,16 +9,15 @@
 <body>
     <script >
         
-        for(let line = 0; line < 8; line++){
-            const stringOne = " # # # #"
-            const stringTwo = "# # # # "
-            if(line % 2 == 0){
-                console.log(stringOne)
-            }else{
-                console.log(stringTwo)
-            }  
+        function min(a, b){
+            if(a < b) {
+                return a
+            } else{
+                return b
+            }
+            return a
         }
-                
+        min(2, 1)
     </script>
 
 </body>
