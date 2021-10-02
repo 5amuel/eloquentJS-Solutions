@@ -9,25 +9,32 @@
 <body>
     <script >
         
-        function countBs(string) {
-            const letter = "B"
-            let counter = 0
-            for(let i = 0; i < string.length; i++){
-                if(string[i] === letter) counter += 1; 
+        const range = (a, n) => {
+            let numbers = []
+            for(let i = a; i <= n; i++){
+               numbers = [...numbers, i]
+               numbers.push[i]
+               
             }
-            return counter
-          
+            return numbers
         }
 
-        function countChar (str, ltr) {
-            let counter = 0
-            for(let i = 0; i < str.length; i++){
-                if(str[i] === ltr) counter += 1;
-            }
-            return counter
-        }
+      
 
+        const sum = (arr) => {
+            let suma = 0
+            for(let i = 0; i < arr.length; i++){
+                suma = suma + arr[i]
+                
+            }
+            return suma
+            
+        }
         
+       console.log(sum(range(1,10)))
+        // console.log(sum(arreglo))
+        // console.log(range(1,10))
+
     </script>
 
 </body>
