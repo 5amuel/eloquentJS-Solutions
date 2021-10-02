@@ -8,29 +8,18 @@
 </head>
 <body>
     <script >
-        const reverseArray = (arr) => {
-            const newArray = []
-            for(let i = 0; i = arr.length; i ++){
-                newArray.push(arr.pop())
-            }
-            return newArray
-        }
-        console.log(reverseArray([1,2,3,4,5]))
+       var arr1 = [10, 20];
 
-        
-        const reverseArrayInPlace = (arr) => {
-            const limit = arr.length
-            for(let i = 0; i <= limit; i ++) {
-                arr.pop(i)
-                arr.unshift(i) 
+       function arrayToList(arr) {
+            let list = null;
+            for (let i = arr.length - 1; i >= 0; i--) {
+                list = {value: arr[i]};
+                list.push(rest)
             }
+            console.log(list)
         }
-        let arrayValue = [1, 2, 3, 4, 5];
-        reverseArrayInPlace(arrayValue)
-        console.log(arrayValue)
-
-        
-       
+       console.log(arrayToList(arr1))
+                
     </script>
 
 </body>
