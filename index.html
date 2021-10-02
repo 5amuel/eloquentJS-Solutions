@@ -8,33 +8,29 @@
 </head>
 <body>
     <script >
-        
-        const range = (a, n) => {
-            let numbers = []
-            for(let i = a; i <= n; i++){
-               numbers = [...numbers, i]
-               numbers.push[i]
-               
+        const reverseArray = (arr) => {
+            const newArray = []
+            for(let i = 0; i = arr.length; i ++){
+                newArray.push(arr.pop())
             }
-            return numbers
+            return newArray
         }
+        console.log(reverseArray([1,2,3,4,5]))
 
-      
-
-        const sum = (arr) => {
-            let suma = 0
-            for(let i = 0; i < arr.length; i++){
-                suma = suma + arr[i]
-                
-            }
-            return suma
-            
-        }
         
-       console.log(sum(range(1,10)))
-        // console.log(sum(arreglo))
-        // console.log(range(1,10))
+        const reverseArrayInPlace = (arr) => {
+            const limit = arr.length
+            for(let i = 0; i <= limit; i ++) {
+                arr.pop(i)
+                arr.unshift(i) 
+            }
+        }
+        let arrayValue = [1, 2, 3, 4, 5];
+        reverseArrayInPlace(arrayValue)
+        console.log(arrayValue)
 
+        
+       
     </script>
 
 </body>
