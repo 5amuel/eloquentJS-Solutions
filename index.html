@@ -8,40 +8,34 @@
 </head>
 <body>
     <script >
-       var arr1 = [10, 20, 30];
+// //////////////////////////////////////////////
+        let arrays = [[1, 2, 3], [4, 5], [6]];
+        let allJoined = arrays.reduce((acumulador, actual) => acumulador.concat(actual))
+        console.log(allJoined)
 
-       function arrayToList(arr) {
-            let list = null;
-            for (let i = arr.length - 1; i >= 0; i--) {
-                list = {value: arr[i], rest: list};
-            }
-            return list;
+// //////////////////////////////////////////////
+        function loop(valorInicial, valorInicialMayorQueCero, ValorInicialMenosUno, muestraEnConsola ){
+            do {
+                muestraEnConsola(valorInicial)
+                valorInicial = ValorInicialMenosUno(valorInicial)  
+            } 
+            while (valorInicialMayorQueCero(valorInicial))
         }
-    //    console.log(arrayToList(arr1))
+        loop(3, n => n > 0, n => n - 1, console.log);
 
-
-       function listToArray(inputList) {
-        currentArray = [inputList.value];
-            if (inputList.rest) {
-                currentArray = currentArray.concat(listToArray(inputList.rest));
-                console.log(currentArray)
-            }
-            return currentArray;
+////////////////////////////////////////////////
+        function every(arreglo, funcionCondicional){
+            for (let cadaElemento of arreglo){
+                if(!funcionCondicional(cadaElemento)) return false
+            } 
+            return true
         }
-        // console.log(listToArray(arrayToList([10, 20, 30])))
-
-        function prepend(el, list) {
-            return {value: el, rest: list};
-        }
-
-        function nth(list, nr) {
-            if (nr == 0) {
-                return list.value
-            } else {
-                return nth(list.rest, nr-1)
-            }
-        }
-                
+        console.log(every([1,2,3,11], n => n < 10));
+////////////////////////////////////////////////  
+    function every2(arreglo, funcionCondicional){
+        return !arreglo.some(element => !funcionCondicional(element))
+    }              
+    console.log(every2([1,2,3,11], n => n < 10));
     </script>
 
 </body>
