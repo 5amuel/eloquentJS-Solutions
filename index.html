@@ -20,13 +20,12 @@
     //    console.log(arrayToList(arr1))
 
 
-       function listToArray(inputList) {
-        currentArray = [inputList.value];
-            if (inputList.rest) {
-                currentArray = currentArray.concat(listToArray(inputList.rest));
-                console.log(currentArray)
-            }
-            return currentArray;
+       function listToArray(lista) {
+          let arreglo = [];
+          for (let objeto = list; objeto; objeto = objeto.rest) {
+            array.push(objeto.value);
+          }
+          return arreglo;
         }
         // console.log(listToArray(arrayToList([10, 20, 30])))
 
