@@ -16,6 +16,13 @@
            plus(anotherVector){
                return new Vec(this.x + anotherVector.x, this.y + anotherVector.y)
            }
+           minus(anotherVector){
+               return new Vec(this.x - anotherVector.x, this.y - anotherVector.y)
+           }
+
+           get lenght(){
+               return Math.sqrt(this.x * this.x + this.y * this.y)
+           }
        }
     </script>
 
