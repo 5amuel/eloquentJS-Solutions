@@ -8,22 +8,35 @@
 </head>
 <body>
     <script >
-       class Vec {
-           constructor(x, y){
-               this.x = x;
-               this.y = y;
-           }
-           plus(anotherVector){
-               return new Vec(this.x + anotherVector.x, this.y + anotherVector.y)
-           }
-           minus(anotherVector){
-               return new Vec(this.x - anotherVector.x, this.y - anotherVector.y)
+       class Group {
+           constructor(){
+               this.members = []
            }
 
-           get lenght(){
-               return Math.sqrt(this.x * this.x + this.y * this.y)
+           has(value){
+               return this.members.includes(value)
+           }
+
+           add(value){
+               if(!this.has(value)){
+                   this.members.push(value)
+               }
+           }
+
+           delete(value){
+               this.members = this.members.filter(member => member !== value)
+           }
+
+           static from(array) {
+               let group = new Group;
+               for(let value of array){
+                   group.add(value);
+               }
+               return group;
            }
        }
+
+       
     </script>
 
 </body>
