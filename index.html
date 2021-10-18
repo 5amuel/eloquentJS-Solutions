@@ -8,37 +8,12 @@
 </head>
 <body>
     <script >
-// //////////////////////////////////////////////
-        let arrays = [[1, 2, 3], [4, 5], [6]];
-        let allJoined = arrays.reduce((acumulador, actual) => acumulador.concat(actual))
-        console.log(allJoined)
-
-// //////////////////////////////////////////////
-        function loop(valorInicial, valorInicialMayorQueCero, ValorInicialMenosUno, muestraEnConsola ){
-            do {
-                muestraEnConsola(valorInicial)
-                valorInicial = ValorInicialMenosUno(valorInicial)  
-            } 
-            while (valorInicialMayorQueCero(valorInicial))
-        }
-        loop(3, n => n > 0, n => n - 1, console.log);
-
-////////////////////////////////////////////////
-        function every(arreglo, funcionCondicional){
-            for (let cadaElemento of arreglo){
-                if(!funcionCondicional(cadaElemento)) return false
-            } 
-            return true
-        }
-        console.log(every([1,2,3,11], n => n < 10));
-////////////////////////////////////////////////  
-    function every2(arreglo, funcionCondicional){
-        return !arreglo.some(element => !funcionCondicional(element))
-    }              
-    console.log(every2([1,2,3,11], n => n < 10));
-////////////////////////////////////////////////
-
-
+       let varyingSize = {
+            get size() {
+                return Math.floor(Math.random() * 100);
+            }
+        };
+        console.log(varyingSize)
     </script>
 
 </body>
