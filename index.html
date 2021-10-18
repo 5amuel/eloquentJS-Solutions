@@ -8,12 +8,15 @@
 </head>
 <body>
     <script >
-       let varyingSize = {
-            get size() {
-                return Math.floor(Math.random() * 100);
-            }
-        };
-        console.log(varyingSize)
+       class Vec {
+           constructor(x, y){
+               this.x = x;
+               this.y = y;
+           }
+           plus(anotherVector){
+               return new Vec(this.x + anotherVector.x, this.y + anotherVector.y)
+           }
+       }
     </script>
 
 </body>
