@@ -8,59 +8,29 @@
 </head>
 <body>
     <script >
-       class Group {
-           constructor(){
-               this.members = []
-           }
+        // la funcion compareRobots toma dos robot y su memoria fomo argumento
+        // cada robot resuelve 100 tareas y cuando termina genera un numero promedio de pasos que tomo cada robot por tarea
+      function countSteps(estado, robot, memoria) {
+        for (let steps = 0;; steps++) {
+            if (estado.parcels.length == 0) return steps;
+            let action = robot(state, memoria);
+            estado = estado.move(action.direction);
+            memory = action.memoria;
+        }
+        }
 
-           has(value){
-               return this.members.includes(value)
-           }
+        function compareRobots(robot1, memory1, robot2, memory2) {
+        let totalRobotUno = 0, totalRobotDos = 0;
+        for (let i = 0; i < 100; i++) {
+            let state = VillageState.random();
+            totalRobotUno += countSteps(state, robot1, memory1);
+            totalRobotDos += countSteps(state, robot2, memory2);
+        }
+        console.log(`Robot 1 needed ${totalRobotUno / 100} steps per task`)
+        console.log(`Robot 2 needed ${totalRobotDos / 100}`)
+    }
 
-           add(value){
-               if(!this.has(value)){
-                   this.members.push(value)
-               }
-           }
-
-           delete(value){
-               this.members = this.members.filter(member => member !== value)
-           }
-
-           static from(array) {
-               let group = new Group;
-               for(let value of array){
-                   group.add(value);
-               }
-               return group;
-           }
-           [Symbol.iterator](){
-               return new GroupIterator(this)
-           }
-       }
-
-       class GroupIterator{
-           constructor(group){
-               this.group = group
-               this.position = 0
-           }
-           next(){
-               if(this.position >= this.group.members.lenght){
-                   return {done:true}
-               }else{
-                   let result = {value: this.group.members[this.position], done:false};
-                   this.position++
-                   return result
-               }
-           }
-       }
-
-
-       //////////////Borrowing a method//////////////////
-       let map = {one: true, two: true, hasOwnProperty: true};
-       console.log(Object.prototype.hasOwnProperty.call(map, 'one'))
     
-
     </script>
 
 </body>
