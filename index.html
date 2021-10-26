@@ -8,28 +8,39 @@
 </head>
 <body>
     <script >
-        // la funcion compareRobots toma dos robot y su memoria fomo argumento
-        // cada robot resuelve 100 tareas y cuando termina genera un numero promedio de pasos que tomo cada robot por tarea
-      function countSteps(estado, robot, memoria) {
-        for (let steps = 0;; steps++) {
-            if (estado.parcels.length == 0) return steps;
-            let action = robot(state, memoria);
-            estado = estado.move(action.direction);
-            memory = action.memoria;
-        }
+        // esta clase almacena un conjunto de datos (array)
+        // el metodo add retorna una nueva instancia de PCGroup con los elementos dados
+        //y el metodo delete igualmente retorna un nuevo una nueva intancia sin los elementos dados
+        class PGroup {
+            constructor(inputArray) {
+                this.members = inputArray;
+            }
+            
+            add(value) {
+                if (this.has(value)) return this;
+                return new PGroup([...this.members, value]);
+            }
+            
+            delete(value) {
+                if (!this.has(value)) return this;
+                return new PGroup(this.members.filter(x => x !== value));
+            }
+            
+            has(value) {
+                return this.members.includes(value);
+            }
+            
         }
 
-        function compareRobots(robot1, memory1, robot2, memory2) {
-        let totalRobotUno = 0, totalRobotDos = 0;
-        for (let i = 0; i < 100; i++) {
-            let state = VillageState.random();
-            totalRobotUno += countSteps(state, robot1, memory1);
-            totalRobotDos += countSteps(state, robot2, memory2);
-        }
-        console.log(`Robot 1 needed ${totalRobotUno / 100} steps per task`)
-        console.log(`Robot 2 needed ${totalRobotDos / 100}`)
-    }
+        PGroup.empty = new PGroup([]);
 
+        let a = PGroup.empty.add("a");
+        let ab = a.add("b");
+        let b = ab.delete("a");
+
+        console.log(b.has("b"));
+        console.log(a.has("b"));
+        console.log(b.has("a"));
     
     </script>
 
