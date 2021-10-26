@@ -8,39 +8,28 @@
 </head>
 <body>
     <script >
-        // esta clase almacena un conjunto de datos (array)
-        // el metodo add retorna una nueva instancia de PCGroup con los elementos dados
-        //y el metodo delete igualmente retorna un nuevo una nueva intancia sin los elementos dados
-        class PGroup {
-            constructor(inputArray) {
-                this.members = inputArray;
-            }
-            
-            add(value) {
-                if (this.has(value)) return this;
-                return new PGroup([...this.members, value]);
-            }
-            
-            delete(value) {
-                if (!this.has(value)) return this;
-                return new PGroup(this.members.filter(x => x !== value));
-            }
-            
-            has(value) {
-                return this.members.includes(value);
-            }
-            
+    class MultiplicatorUnitFailure extends Error {}
+
+    function primitiveMultiply(a, b) {
+        if (Math.random() < 0.2) {
+            return a * b;
+        } else {
+            throw new MultiplicatorUnitFailure("Klunk");
         }
+    }
 
-        PGroup.empty = new PGroup([]);
+    function reliableMultiply(a, b) {
+        try {
+            return primitiveMultiply(a, b);
+        } catch (error) {
+            if (error instanceof MultiplicatorUnitFailure) {
+            return reliableMultiply(a, b);
+            } else {
+            throw error;
+            }
+        }
+    }
 
-        let a = PGroup.empty.add("a");
-        let ab = a.add("b");
-        let b = ab.delete("a");
-
-        console.log(b.has("b"));
-        console.log(a.has("b"));
-        console.log(b.has("a"));
     
     </script>
 
