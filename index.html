@@ -9,22 +9,18 @@
 <body>
     <script >
         
-        let number = /^[+\-]?(\d+(\.\d*)?|\.\d+)([eE][+\-]?\d+)?$/;
-
-       
-        for (let str of ["1", "-1", "+15", "1.55", ".5", "5.",
-                        "1.3e2", "1E-4", "1e+12"]) {
-        if (!number.test(str)) {
-            console.log(`Failed to match '${str}'`);
-        }
-        }
-        for (let str of ["1a", "+-1", "1.2.3", "1+1", "1e4.5",
-                        ".5.", "1f5", "."]) {
-        if (number.test(str)) {
-            console.log(`Incorrectly accepted '${str}'`);
-        }
-        }
-    
+        const {buildGraph} = require("./graph");
+        const roads = [
+        "Alice's House-Bob's House",   "Alice's House-Cabin",
+        "Alice's House-Post Office",   "Bob's House-Town Hall",
+        "Daria's House-Ernie's House", "Daria's House-Town Hall",
+        "Ernie's House-Grete's House", "Grete's House-Farm",
+        "Grete's House-Shop",          "Marketplace-Farm",
+        "Marketplace-Post Office",     "Marketplace-Shop",
+        "Marketplace-Town Hall",       "Shop-Town Hall"
+        ];
+        exports.roadGraph = buildGraph(roads.map(r => r.split("-")));
+        
     </script>
 
 </body>
