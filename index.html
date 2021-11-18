@@ -9,17 +9,27 @@
 <body>
     <script >
         
-        const {buildGraph} = require("./graph");
-        const roads = [
-        "Alice's House-Bob's House",   "Alice's House-Cabin",
-        "Alice's House-Post Office",   "Bob's House-Town Hall",
-        "Daria's House-Ernie's House", "Daria's House-Town Hall",
-        "Ernie's House-Grete's House", "Grete's House-Farm",
-        "Grete's House-Shop",          "Marketplace-Farm",
-        "Marketplace-Post Office",     "Marketplace-Shop",
-        "Marketplace-Town Hall",       "Shop-Town Hall"
-        ];
-        exports.roadGraph = buildGraph(roads.map(r => r.split("-")));
+        async function locateScalpel(nest) {
+            let current = nest.name;
+            while (true) {
+                let next = await anyStorage(nest, current, "scalpel");
+                if (next == current) return current;
+                current = next;
+            }
+        }
+
+        function locateScalpel2(nest) {
+            function loop(current) {
+                return anyStorage(nest, current, "scalpel").then(next => {
+                if (next == current) return current;
+                else return loop(next);
+                });
+            }
+            return loop(nest.name);
+        }
+
+        locateScalpel(bigOak).then(console.log);
+        locateScalpel2(bigOak).then(console.log);
         
     </script>
 
