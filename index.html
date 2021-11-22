@@ -9,27 +9,20 @@
 <body>
     <script >
         
-        async function locateScalpel(nest) {
-            let current = nest.name;
-            while (true) {
-                let next = await anyStorage(nest, current, "scalpel");
-                if (next == current) return current;
-                current = next;
+        function Promise_all(promises) {
+        return new Promise((resolve, reject) => {
+            let results = [];
+            let pending = promises.length;
+            for (let i = 0; i < promises.length; i++) {
+                promises[i].then(result => {
+                    results[i] = result;
+                    pending--;
+                    if (pending == 0) resolve(results);
+                }).catch(reject);
             }
+            if (promises.length == 0) resolve(results);
+        });
         }
-
-        function locateScalpel2(nest) {
-            function loop(current) {
-                return anyStorage(nest, current, "scalpel").then(next => {
-                if (next == current) return current;
-                else return loop(next);
-                });
-            }
-            return loop(nest.name);
-        }
-        //
-        locateScalpel(bigOak).then(console.log);
-        locateScalpel2(bigOak).then(console.log);
         
     </script>
 
